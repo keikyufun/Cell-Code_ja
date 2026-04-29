@@ -1,0 +1,58 @@
+{
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": [
+				"txt",
+				"bot",
+				"error",
+				"read_file",
+				"read_log",
+				"mkdir",
+				"delete_folder",
+				"file",
+				"delete_file",
+				"cmd",
+				"patch",
+				"finish"
+			],
+			"description": "実行するアクションの種類を選択してください。"
+		},
+		"message": {
+			"type": "string",
+			"description": "bot, error, finish の説明文。finish の場合は任意。"
+		},
+		"content": {
+			"type": "string",
+			"description": "txt の表示内容、または file の書き込み内容。"
+		},
+		"path": {
+			"type": "string",
+			"description": "操作対象の相対パス（ai_workspace 内）。mkdir, file, delete_file, delete_folder, patch, read_file で使用。"
+		},
+		"filename": {
+			"type": "string",
+			"description": "read_log で読み取るログファイル名。"
+		},
+		"cmd": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "cmd で実行するコマンドと引数のリスト。例: [\"ls\", \"-l\"]"
+		},
+		"timeout": {
+			"type": "number",
+			"description": "cmd 実行時の制限時間（秒）。"
+		},
+		"diff": {
+			"type": "string",
+			"description": "patch 適用時に使用する unified diff。"
+		}
+	},
+	"required": [
+		"type"
+	],
+	"additionalProperties": false
+}

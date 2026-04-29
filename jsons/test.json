@@ -1,0 +1,71 @@
+[
+	{
+		"type": "txt",
+		"content_lines": [
+			"=== Cell-Code OS 全コマンド総合テスト開始 ===",
+			"1. txt / bot / error",
+			"2. mkdir / file / read_file / delete_file / delete_folder",
+			"3. cmd",
+			"4. patch",
+			"すべての動作を 1 回で検証します。"
+		]
+	},
+	{
+		"type": "bot",
+		"message": "bot メッセージのテストです。"
+	},
+	{
+		"type": "error",
+		"message": "これは error テストです。"
+	},
+	{
+		"type": "mkdir",
+		"path": "test_dir"
+	},
+	{
+		"type": "file",
+		"path": "test_dir/test.txt",
+		"content_lines": [
+			"AAA",
+			"BBB",
+			"CCC"
+		]
+	},
+	{
+		"type": "read_file",
+		"path": "test_dir/test.txt"
+	},
+	{
+		"type": "patch",
+		"path": "test_dir/test.txt",
+		"diff": "--- a/test.txt\n+++ b/test.txt\n@@ -1,3 +1,3 @@\n AAA\n-BBB\n+XXX\n CCC\n"
+	},
+	{
+		"type": "read_file",
+		"path": "test_dir/test.txt"
+	},
+	{
+		"type": "cmd",
+		"name": "echo_test",
+		"cmd": [
+			"echo",
+			"hello"
+		],
+		"workdir": ".",
+		"timeout": 3
+	},
+	{
+		"type": "delete_file",
+		"path": "test_dir/test.txt"
+	},
+	{
+		"type": "delete_folder",
+		"path": "test_dir"
+	},
+	{
+		"type": "txt",
+		"content_lines": [
+			"=== Cell-Code OS 全コマンド総合テスト完了 ==="
+		]
+	}
+]

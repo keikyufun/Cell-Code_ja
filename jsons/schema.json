@@ -1,0 +1,54 @@
+{
+	"type": "OBJECT",
+	"properties": {
+	  "type": {
+		"type": "STRING",
+		"enum": [
+		  "txt",
+		  "bot",
+		  "error",
+		  "read_file",
+		  "read_log",
+		  "mkdir",
+		  "delete_folder",
+		  "file",
+		  "delete_file",
+		  "cmd",
+		  "patch"
+		],
+		"description": "実行するアクションの種類を選択してください。"
+	  },
+	  "message": {
+		"type": "STRING",
+		"description": "botやerror、またはアクションの説明。"
+	  },
+	  "content": {
+		"type": "STRING",
+		"description": "txtでの表示内容、またはfileでのファイル書き込み内容。"
+	  },
+	  "path": {
+		"type": "STRING",
+		"description": "操作対象の相対パス（ai_workspace内）。mkdir, file, delete_file, delete_folder, patch, read_file で使用。"
+	  },
+	  "filename": {
+		"type": "STRING",
+		"description": "read_log で読み取るログファイルの名前。"
+	  },
+	  "cmd": {
+		"type": "ARRAY",
+		"items": { "type": "STRING" },
+		"description": "cmd で実行するコマンドと引数のリスト。例: ['ls', '-l']"
+	  },
+	  "timeout": {
+		"type": "NUMBER",
+		"description": "cmd 実行時の制限時間（秒）。"
+	  },
+	  "diff": {
+		"type": "STRING",
+		"description": "patch 適用時に使用する difflib 形式の差分。restoreモードで使用。"
+	  }
+	},
+	"required": ["type"],
+	"additionalProperties": false
+  }
+  
